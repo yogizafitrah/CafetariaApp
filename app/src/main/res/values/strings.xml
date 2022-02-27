@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CAFETARIA</string>
+    <string name="nama_product">Product Name</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="category_product">Category</string>
+    <string name="harga_product">Product Price</string>
+</resources>

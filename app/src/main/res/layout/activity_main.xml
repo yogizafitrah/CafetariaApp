@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.main.MainActivity">
+    <LinearLayout
+        android:id="@+id/bgbiru"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/wave_blue"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Cafetaria"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/putih"
+            android:textStyle="bold"
+             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btn_products"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Products"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/rounded_corner_text"
+                />
+            <Button
+                android:id="@+id/btn_category"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Category"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/putih"
+                android:background="@drawable/rounded_corner"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        app:layout_anchor="@+id/toolbar"
+        app:layout_anchorGravity="center">
+
+        <EditText
+            android:id="@+id/edt_search"
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:hint="Search"
+             />
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_baseline_search_24">
+
+        </Button>
+
+
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_gravity="bottom">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_firedb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            tools:listitem="@layout/item_list_products"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_firedb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
