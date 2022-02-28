@@ -1,5 +1,6 @@
 package com.cloudteam.crudfirebase.activity.addedit
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.widget.Toast
@@ -10,6 +11,9 @@ import com.cloudteam.crudfirebase.utils.Const.PATH_COLLECTION
 import com.cloudteam.crudfirebase.utils.Const.setTimeStamp
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.StorageTask
 import kotlinx.android.synthetic.main.activity_addedit.*
 
 
@@ -20,10 +24,14 @@ class AddEditActivity : AppCompatActivity() {
         const val REQ_EDIT = "req_edit"
     }
 
+//    private var mImageUri : Uri? = null
     private var isEdit = false
     private var products: Products? = null
     private val mFirestore = FirebaseFirestore.getInstance()
     private val mUsersCollection = mFirestore.collection(PATH_COLLECTION)
+//    private var mStorageRef: StorageReference? = FirebaseStorage.getInstance().getReference("images")
+//    private var mUploadTask: StorageTask<*>? = null
+//    private val PICK_IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +53,7 @@ class AddEditActivity : AppCompatActivity() {
             ti_price.text = Editable.Factory.getInstance().newEditable(products?.doublePrice.toString())
         }
     }
+
 
     private fun saveData() {
         setData(products?.strId)
@@ -70,7 +79,7 @@ class AddEditActivity : AppCompatActivity() {
     //fungsi untuk mengambil inputan data dan menyimpannya pada firestore
     private fun createProducts(strId: String?): Task<Void> {
         val writeBatch = mFirestore.batch()
-        val path = PATH_COLLECTION + setTimeStamp().toString() //exmp hasil : users-43287845
+        val path = PATH_COLLECTION + setTimeStamp().toString() //exmp hasil
         val id = strId ?: path
         val name = ti_name.text.toString()
         val category = ti_category.text.toString()

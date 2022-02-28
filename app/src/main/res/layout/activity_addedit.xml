@@ -78,6 +78,28 @@
                     android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/btn_choose_image"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="Choose Image"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/textInputLayout"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />-->
+<!--            <ImageView-->
+<!--                android:layout_gravity="center"-->
+<!--                android:id="@+id/chooseImageView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="180dp"-->
+<!--                tools:ignore="MissingConstraints"-->
+<!--                android:layout_margin="16dp"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/textInputLayout"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/btn_choose_image"/>-->
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save"
                 android:layout_width="0dp"
@@ -86,6 +108,7 @@
                 android:text="@string/save"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
+                android:background="@color/colorPrimary2"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout"

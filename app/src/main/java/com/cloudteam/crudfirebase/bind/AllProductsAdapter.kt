@@ -13,8 +13,11 @@ import com.cloudteam.crudfirebase.activity.addedit.AddEditActivity
 import com.cloudteam.crudfirebase.model.Products
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.common.collect.Iterables.size
+
 import com.google.firebase.firestore.CollectionReference
 import kotlinx.android.synthetic.main.item_list_products.view.*
+
 
 
 class AllProductsAdapter(
