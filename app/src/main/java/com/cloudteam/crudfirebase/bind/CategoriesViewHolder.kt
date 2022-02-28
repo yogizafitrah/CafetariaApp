@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.item_list_products.view.*
 //    fun bindItem(products: Products) {
 //        view.apply {
 //            val name_product = "Product Name   : ${products.strName}"
-//            val caegory = "Category : ${products.strCategory}"
+//            val category = "Category : ${products.strCategory}"
 //            val price = "Price    : ${products.doublePrice.toString()}"
 //
 //            tv_name.text = name

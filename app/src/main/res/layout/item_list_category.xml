@@ -4,20 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:paddingBottom="10dp"
+    >
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/gambar_icon_foreground"
+        app:civ_border_color = "@color/biru"
+        app:civ_border_width = "4dp"
+        app:civ_shadow = "true"
+        app:civ_shadow_radius = "10"
+        app:civ_shadow_color = "@color/biru"
+        tools:ignore="MissingConstraints" />
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@mipmap/Gambar_icon_round"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="NAMA"
-        android:textSize="25sp"
+        android:textSize="20sp"
         />
 
 <!--    <TextView-->

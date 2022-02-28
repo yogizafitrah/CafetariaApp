@@ -10,44 +10,40 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.cloudteam.crudfirebase.R
 import com.cloudteam.crudfirebase.activity.addedit.AddEditActivity
-import com.cloudteam.crudfirebase.model.Products
+import com.cloudteam.crudfirebase.model.Categories
+import com.google.firebase.firestore.CollectionReference
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
-import kotlinx.android.synthetic.main.item_list_products.view.*
+import kotlinx.android.synthetic.main.item_list_category.view.tv_name
 
 
-class AllProductsAdapter(
+class AllCategoriesAdapter (
     private val context: Context,
     private val collection: CollectionReference,
-    options: FirestoreRecyclerOptions<Products>
-    ) : FirestoreRecyclerAdapter<Products, AllProductsAdapter.ProductsViewHolder>(options) {
+    options: FirestoreRecyclerOptions<Categories>
+) : FirestoreRecyclerAdapter<Categories, AllCategoriesAdapter.CategoriesViewHolder>(options) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        return ProductsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_products, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
+        return CategoriesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_category, parent, false))
     }
 
-    override fun onBindViewHolder(viewHolder: ProductsViewHolder, position: Int, products: Products) {
-        viewHolder.bindItem(products)
+    override fun onBindViewHolder(viewHolder: CategoriesViewHolder, position: Int, category: Categories) {
+        viewHolder.bindItem(category)
         viewHolder.itemView.setOnClickListener {
-            showDialogMenu(products)
+            showDialogMenu(category)
         }
     }
-    class ProductsViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindItem(products: Products) {
+    class CategoriesViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        fun bindItem(category: Categories) {
             view.apply {
-                val name = "Product Name   : ${products.strName}"
-                val category = "Category : ${products.strCategory}"
-                val price = "Price    : $${products.doublePrice}"
+                val name = " ${category.nameCategory}"
 
                 tv_name.text = name
-                tv_category.text = category
-                tv_price.text = price
             }
         }
     }
 
-    private fun showDialogMenu(products: Products) {
+    private fun showDialogMenu(category: Categories) {
         //dialog popup edit hapus
         val builder = AlertDialog.Builder(context, R.style.ThemeOverlay_MaterialComponents_Dialog_Alert)
         val option = arrayOf("Edit", "Hapus")
@@ -56,9 +52,9 @@ class AllProductsAdapter(
                 //0 -> untuk berpindah ke activity AddEditActivity untuk edit dengan membawa data
                 0 -> context.startActivity(Intent(context, AddEditActivity::class.java).apply {
                     putExtra(AddEditActivity.REQ_EDIT, true)
-                    putExtra(AddEditActivity.EXTRA_DATA, products)
+                    putExtra(AddEditActivity.EXTRA_DATA, category)
                 })
-                1 -> showDialogDel(products.strId)
+                1 -> showDialogDel(category.strId)
             }
         }
         builder.create().show()

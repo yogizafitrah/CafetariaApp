@@ -6,16 +6,29 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white">
 
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/gambar_icon_foreground"
+        app:civ_border_color = "@color/biru"
+        app:civ_border_width = "4dp"
+        app:civ_shadow = "true"
+        app:civ_shadow_radius = "10"
+        app:civ_shadow_color = "@color/biru"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="110dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="NAMA" />
 
     <TextView
@@ -28,6 +41,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_name"
         app:layout_constraintVertical_bias="0.0"
+        android:textSize="20sp"
         tools:text="CATEGORY" />
 
     <TextView
@@ -40,6 +54,7 @@
         app:layout_constraintStart_toStartOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@id/tv_category"
         app:layout_constraintVertical_bias="0.0"
+        android:textSize="20sp"
         tools:text="HARGA" />
 
     <View

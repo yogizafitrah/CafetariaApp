@@ -1,49 +1,51 @@
 package com.cloudteam.crudfirebase.activity.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cloudteam.crudfirebase.R
 import com.cloudteam.crudfirebase.activity.addedit.AddEditActivity
-import com.cloudteam.crudfirebase.bind.AllProductsAdapter
-import com.cloudteam.crudfirebase.model.Products
-import com.cloudteam.crudfirebase.utils.Const.PATH_COLLECTION
-import com.cloudteam.crudfirebase.utils.Const.PATH_PRICE
+import com.cloudteam.crudfirebase.activity.addedit.AddEditActivityCategories
+import com.cloudteam.crudfirebase.bind.AllCategoriesAdapter
+import com.cloudteam.crudfirebase.model.Categories
+import com.cloudteam.crudfirebase.utils.Const
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
+import kotlinx.android.synthetic.main.activity_category.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var mAdapter: FirestoreRecyclerAdapter<Products, AllProductsAdapter.ProductsViewHolder>
+
+class CategoryActivity : AppCompatActivity() {
+    private lateinit var mAdapter: FirestoreRecyclerAdapter<Categories, AllCategoriesAdapter.CategoriesViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
-    private val mProductsCollection = mFirestore.collection(PATH_COLLECTION)
-    private val mQuery = mProductsCollection.orderBy(PATH_PRICE, Query.Direction.ASCENDING)
+    private val mCategoriessCollection = mFirestore.collection(Const.PATH_COLLECTION_CAT)
+    private val mQuery = mCategoriessCollection.orderBy(Const.PATH_COLLECTION_NAME)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_category)
 
         initView()
         setupAdapter()
 
-        btn_category.setOnClickListener{
-            val intent = Intent(this,CategoryActivity::class.java)
+        btn_products2.setOnClickListener{
+            val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
     }
 
     private fun initView() {
         supportActionBar?.title = "CAFETARIA"
-        rv_firedb.apply {
+        rv_firedbcat.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@CategoryActivity)
         }
-        fab_firedb.setOnClickListener {
+        fab_firedbcat.setOnClickListener {
             //berpindah ke activity AddEditActivity untuk tambah data
-            startActivity(Intent(this, AddEditActivity::class.java).apply {
+            startActivity(Intent(this, AddEditActivityCategories::class.java).apply {
                 putExtra(AddEditActivity.REQ_EDIT, false)
             })
         }
@@ -51,14 +53,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupAdapter() {
         //set adapter yang akan menampilkan data pada recyclerview
-        val options = FirestoreRecyclerOptions.Builder<Products>()
-            .setQuery(mQuery, Products::class.java)
+        val options = FirestoreRecyclerOptions.Builder<Categories>()
+            .setQuery(mQuery, Categories::class.java)
             .build()
 
 //        mAdapter = object : FirestoreRecyclerAdapter<Users, UsersViewHolder>(options) {
 //            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
 //                return UsersViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_user, parent, false))
-//            }
+//
 //
 //            override fun onBindViewHolder(viewHolder: UsersViewHolder, position: Int, model: Users) {
 //                viewHolder.bindItem(model)
@@ -67,9 +69,9 @@ class MainActivity : AppCompatActivity() {
 //                }
 //            }
 //        }
-        mAdapter = AllProductsAdapter(this, mProductsCollection, options)
+        mAdapter = AllCategoriesAdapter(this, mCategoriessCollection, options)
         mAdapter.notifyDataSetChanged()
-        rv_firedb.adapter = mAdapter
+        rv_firedbcat.adapter = mAdapter
     }
 
 //    private fun showDialogMenu(users: Users) {

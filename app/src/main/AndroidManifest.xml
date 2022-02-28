@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".activity.addedit.AddEditActivity"
             android:label="Add Product"/>
+        <activity android:name=".activity.main.CategoryActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activity.addedit.AddEditActivityCategories" android:label="Add Category"/>
     </application>
 
 </manifest>
