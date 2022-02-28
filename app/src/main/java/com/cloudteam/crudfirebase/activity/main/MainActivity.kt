@@ -3,6 +3,7 @@ package com.cloudteam.crudfirebase.activity.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cloudteam.crudfirebase.R
 import com.cloudteam.crudfirebase.activity.addedit.AddEditActivity
@@ -17,6 +18,7 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var mSearchText : EditText
     private lateinit var mAdapter: FirestoreRecyclerAdapter<Products, AllProductsAdapter.ProductsViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
     private val mProductsCollection = mFirestore.collection(PATH_COLLECTION)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+//        mSearchText = findViewById(R.id.edt_search)
         initView()
         setupAdapter()
 
@@ -49,7 +51,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun setupAdapter() {
+
         //set adapter yang akan menampilkan data pada recyclerview
         val options = FirestoreRecyclerOptions.Builder<Products>()
             .setQuery(mQuery, Products::class.java)

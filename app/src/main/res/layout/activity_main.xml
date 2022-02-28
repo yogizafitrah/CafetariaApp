@@ -69,6 +69,7 @@
             android:hint="Search"
              />
         <Button
+            android:id="@+id/btn_seacrj"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:background="@drawable/ic_baseline_search_24">
